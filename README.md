@@ -19,7 +19,7 @@ CEnshine was made using primarily Lua, take a look at the source files on this r
 For a more strict and robust shaders building solution check [Composer]() a CLI set of programs made
 with C++ for decrypting, encrypting, decompiling and compiling of shaders.
 
-# Fixes and future improvements
+# Fixes so far
 Some of the things we have fixed with these shaders so far are listed below, as well as unmarked all
 the things we plan to do to restore at some point as well.
 - **Shader Transparent Plasma** - (Plasma based shaders will render properly, for example biped shields recharge)
@@ -28,26 +28,30 @@ the things we plan to do to restore at some point as well.
 - **Transparent Glass Reflection** Bumped - (Glass with bumped reflections)
 - **Transparent Water** - (Water color and opacity)
 - **Environment Model** - (Objects now draw behind fog, animations fade correctly, cube map alpha applies correctly)
-- **Environment Texture** - (Restored normal, blended and blended base specular function types)
+- **Environment Texture** - (Restored normal, blended and blended base specular function types, self illumination works as expected)
+
+**NOTE:** There are still pending some shaders and functions to fix, every feedback from what shaders are missing to fix or what they can be breaking even more is totally appreciated.
+
+There are some plans to bring some removed shaders back like the **"Shader Transparent Generic"**, but that will require something a little bit more complex, stay tuned to more updates.
 
 # Screenshots
 Here are some 2K screenshots demonstrating changes between the broken shaders and the fixed ones, just
 to show a few, shaders include other fixes that require looking at them in game to appreciate:
 
 **BEFORE**
-![decompilation](img/screenshots/B40_3.png)
+![B40_3](img/screenshots/B40_3.png)
 **AFTER**
-![decompilation](img/screenshots/B40_4.png)
+![B40_4](img/screenshots/B40_4.png)
 **BEFORE**
-![decompilation](img/screenshots/B40_5.png)
+![B40_5](img/screenshots/B40_5.png)
 **AFTER**
-![decompilation](img/screenshots/B40_6.png)
+![B40_6](img/screenshots/B40_6.png)
 **BEFORE**
-![decompilation](img/screenshots/B40_7.png)
+![B40_7](img/screenshots/B40_7.png)
 **AFTER**
-![decompilation](img/screenshots/B40_8.png)
+![B40_8](img/screenshots/B40_8.png)
 
 # Thanks to
-- [JerryBrick](https://github.com/JerryBrick) - Composer tools creator, tools for decrypting and encrypting shaders
+- [JerryBrick](https://github.com/JerryBrick) - Composer tools creator, tools for decrypting and encrypting shaders **(show some love to Jerry, he is leaving the modding scene)**
 - [MrChromed](https://www.youtube.com/c/MrChromed) - Halo CE Shaders veteran, providing support for validating shaders fixes
 - [C20](https://c20.reclaimers.net/h1/engine/renderer/#gearbox-regressions) - Provided a list of known shaders issues
