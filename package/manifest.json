@@ -1,0 +1,10 @@
+{
+    "manifestVersion": "1.1.0",
+    "files": {},
+    "label": "censhine",
+    "version": "1.0.0",
+    "category": "fix",
+    "author": "Sledmine, Jerry",
+    "name": "CEnshine",
+    "description": "Shaders enhancement for Halo Custom Edition"
+}
