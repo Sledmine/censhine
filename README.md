@@ -56,4 +56,5 @@ to show a few, shaders include other fixes that require looking at them in game 
 # Thanks to
 - [JerryBrick](https://github.com/JerryBrick) - Composer tools creator, tools for decrypting and encrypting shaders **(show some love to Jerry, he is leaving the modding scene)**
 - [MrChromed](https://www.youtube.com/c/MrChromed) - Halo CE Shaders veteran, providing support for validating shaders fixes
+- [MarkMcFuzz](https://www.youtube.com/c/MrChromed) - Another Halo CE Shaders veteran, support and validation
 - [C20](https://c20.reclaimers.net/h1/engine/renderer/#gearbox-regressions) - Provided a list of known shaders issues
