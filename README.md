@@ -32,6 +32,8 @@ the things we plan to do to restore at some point as well.
 
 **NOTE:** There are still pending some shaders and functions to fix, every feedback from what shaders are missing to fix or what they can be breaking even more is totally appreciated.
 
+We are also trying to keep compatibility with dgVoodoo!
+
 There are some plans to bring some removed shaders back like the **"Shader Transparent Generic"**, but that will require something a little bit more complex, stay tuned to more updates.
 
 # Screenshots
