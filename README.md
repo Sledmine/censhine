@@ -16,7 +16,7 @@ Halo Custom Edition as Gearbox left us with broken version of almost all the sha
 
 CEnshine was made using primarily Lua, take a look at the source files on this repository.
 
-For a more strict and robust shaders building solution check [Composer]() a CLI set of programs made
+For a more strict and robust shaders building solution check [Composer](https://github.com/JerryBrick/composer) a CLI set of programs made
 with C++ for decrypting, encrypting, decompiling and compiling of shaders.
 
 # Fixes so far
