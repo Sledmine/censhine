@@ -14,10 +14,17 @@ shaders quality provided in the MCC/Xbox version of the game, just by the joy of
 this is the result of almost 2 weeks of hard work to bring a well deserved set of shaders to
 Halo Custom Edition as Gearbox left us with broken version of almost all the shaders.
 
-CEnshine was made using primarily Lua, take a look at the source files on this repository.
+CEnshine was made possible using primarily Lua and HLSL, take a look at the source files on this
+repository.
 
 For a more deeper introduction to shader encryption see [Composer](https://github.com/JerryBrick/composer) a CLI set of programs made
 with C++ for decrypting, encrypting of shaders.
+
+**Install it with [Mercury](https://github.com/Sledmine/Mercury):**
+```
+mercury install censhine
+```
+Or manually get it from the [releases](https://github.com/Sledmine/censhine/releases) page.
 
 # Fixes so far
 Some of the things we have fixed with these shaders so far are listed below, as well as unmarked all
