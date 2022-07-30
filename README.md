@@ -48,20 +48,23 @@ Here are some 2K screenshots demonstrating changes between the broken shaders an
 to show a few, shaders include other fixes that require looking at them in game to appreciate:
 
 **BEFORE**
-![B40_3](img/screenshots/B40_3.png)
+![B40_1](img/screenshots/B40_1.jpg)
 **AFTER**
-![B40_4](img/screenshots/B40_4.png)
+![B40_2](img/screenshots/B40_2.jpg)
 **BEFORE**
-![B40_5](img/screenshots/B40_5.png)
+![DEATH_ISLAND_1](img/screenshots/DEATH_ISLAND_1.jpg)
 **AFTER**
-![B40_6](img/screenshots/B40_6.png)
+![DEATH_ISLAND_2](img/screenshots/DEATH_ISLAND_2.jpg)
 **BEFORE**
-![B40_7](img/screenshots/B40_7.png)
+![DEATH_ISLAND_3](img/screenshots/DEATH_ISLAND_3.jpg)
 **AFTER**
-![B40_8](img/screenshots/B40_8.png)
+![DEATH_ISLAND_4](img/screenshots/DEATH_ISLAND_4.jpg)
 
 # Thanks to
 - [JerryBrick](https://github.com/JerryBrick) - Composer tools creator, tools for decrypting and encrypting shaders **(show some love to Jerry, he is leaving the modding scene)**
 - [MrChromed](https://www.youtube.com/c/MrChromed) - Halo CE Shaders veteran, providing support for validating shaders fixes
-- [MarkMcFuzz](https://www.youtube.com/c/MrChromed) - Another Halo CE Shaders veteran, support and validation
+- [MarkMcFuzz](https://youtube.com/channel/UCa2MHGKv8KZFBBkkFzNBgkA) - Another Halo CE Shaders veteran, support and validation
+- [Mata](https://youtube.com/channel/UCa2MHGKv8KZFBBkkFzNBgkA) - 3D expert, probably the igniter of this
+  project, when Mata started to learn about HLSL we got inspired to try and attempt to fix CE
+  shaders
 - [C20](https://c20.reclaimers.net/h1/engine/renderer/#gearbox-regressions) - Provided a list of known shaders issues
