@@ -3,3 +3,4 @@ dump/
 build/
 dist/
 rename.sh
+*.enc
