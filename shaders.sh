@@ -1,3 +1,4 @@
+export LUA_PATH='./?.lua;./src/lua/lua_modules/?.lua;./src/lua/lua_modules/fs/?.lua;./src/lua/lua_modules/?/init.lua'
 export SHADER_PATH='./src/game/rasterizer/dx9/shaders'
 export SHADER_COMPILE_CMD="luajit src/lua/compileCEShaders.lua $SHADER_PATH/pixel"
 

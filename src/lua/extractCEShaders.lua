@@ -1,5 +1,6 @@
 local argparse = require "argparse"
 local glue = require "glue"
+local binaries = require "src.lua.binaries"
 local split = glue.string.split
 local inspect = require "inspect"
 local fs = require "fs"
@@ -22,7 +23,7 @@ parser:flag("--keepversion", "Keep shader version in output")
 parser:flag("--preparebuild", "Prepare build folder with extracted shaders")
 local args = parser:parse()
 
-local dissambleCmd = [[wine bin/fxc.exe %s /nologo /dumpbin /Fx %s]]
+local dissambleCmd = binaries.fxc .. [[ %s /nologo /dumpbin /Fx %s]]
 local shadersFilePath = io.open(args.shadersFilePath, "rb")
 local fileString = glue.readfile(args.shadersFilePath, "b")
 local vertexShaderCount = 1

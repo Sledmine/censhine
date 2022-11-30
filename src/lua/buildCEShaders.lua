@@ -1,5 +1,6 @@
 local argparse = require "argparse"
 local glue = require "glue"
+local binaries = require "src.lua.binaries"
 local readfile = glue.readfile
 local keys = glue.keys
 local index = glue.index
@@ -70,7 +71,8 @@ for shaderName, shaderFolderEntry in fs.dir(args.shadersPath) do
                 -- print(shaderName, shaderFunctionName, functionName, majorVersion, minorVersion)
                 local pixelShaderFunctionIndex = pixelShaderFunctions[shaderName][functionName]
                 if not pixelShaderFunctionIndex then
-                    print("ERROR!!! Unknown pixel shader function: " .. shaderName .. " " .. shaderFunctionName)
+                    print("ERROR!!! Unknown pixel shader function: " .. shaderName .. " " ..
+                              shaderFunctionName)
                     os.exit(1)
                 end
                 local shaderFunctionNameWithVersion =
@@ -134,5 +136,5 @@ if args.verifystock then
     end
 end
 if args.encrypt then
-    os.execute("wine bin/composer/composer-encrypt.exe " .. shadersOutputFilePath)
+    os.execute(binaries.encrypt .. " " .. shadersOutputFilePath)
 end

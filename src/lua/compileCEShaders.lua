@@ -5,10 +5,10 @@ local fs = require "fs"
 require "compat53"
 local vertexShaderNames = require"src.lua.constants".vertexShaderNames
 local pixelShaderFunctionMapping = require"src.lua.constants".pixelShaderFunctionMapping
+local binaries                   = require "src.lua.binaries"
 
-local fxcPath = "wine bin/dx9/fxc.exe"
--- local fxcPath = "wine bin/dx11/fxc.exe"
-local fxCompilerCommand = fxcPath .. [[ %s /nologo /I src/game/rasterizer/dx9/shaders/pixel/include /E %s /T %s /Fo %s]]
+local fxcPath = binaries.fxc
+local fxCompilerCommand = fxcPath .. [[ %s /nologo /I "src/game/rasterizer/dx9/shaders/pixel/include" /E %s /T %s /Fo %s]]
 local decompilerCommand = fxcPath .. [[ %s /nologo /dumpbin /Fx %s]]
 
 --- Normalize any string to camel case

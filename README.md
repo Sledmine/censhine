@@ -60,6 +60,33 @@ to show a few, shaders include other fixes that require looking at them in game 
 **AFTER**
 ![DEATH_ISLAND_4](img/screenshots/DEATH_ISLAND_4.jpg)
 
+# Building
+First of all I have to keep clear that I built CEnshine using Linux so a lot of the code assumes you
+are running in a Linux like environment, however I've been doing some efforts to be able to keep
+the code compatible with Windows, most likely you will have to at least run some scripts from here
+in Bash Windows in order to compile shaders.
+
+## Linux requirements
+In Linux there are some minimal requirements to build the code, assuming you are in a Debian based
+distro like ubuntu this should be enough gather all the dependencies, you also need a working
+wine configuration:
+```
+apt install luajit
+apt install wine
+apt install winetricks
+winetricks dxvk
+```
+
+## Windows requirements
+For Windows you will have to download a Lua interpreter from your place of preference, it needs
+to be a luajit interpreter obligatory, I usually download binaries from the [luapower](https://github.com/luapower/luajit/tree/master/bin/mingw64) project.
+
+Then make sure you have the latest version of [DirectX9 runtime](https://www.microsoft.com/en-us/download/details.aspx?id=35) installed, this contains some libraries and binaries required to compile DirectX9 shaders.
+
+## Get it done
+Now just run `./shaders.sh` in the root folder of this project and that's it, a shaders file
+usually named `EffectCollection_ps_2_0.enc` will be dropped in under the dist folder.
+
 # Thanks to
 - [JerryBrick](https://github.com/JerryBrick) - Composer tools creator, tools for decrypting and encrypting shaders **(show some love to Jerry, he is leaving the modding scene)**
 - [MrChromed](https://www.youtube.com/c/MrChromed) - Halo CE Shaders veteran, providing support for validating shaders fixes
@@ -68,3 +95,13 @@ to show a few, shaders include other fixes that require looking at them in game 
   project, when Mata started to learn about HLSL we got inspired to try and attempt to fix CE
   shaders
 - [C20](https://c20.reclaimers.net/h1/engine/renderer/#gearbox-regressions) - Provided a list of known shaders issues
+- Halo MCC Mod Tools and 343i for finally fixing shaders with also building process for a base code
+
+# Disclaimer
+CEnshine is not and will not be related to MCC, this project does not claim to own the fixes to all
+shaders presented here, most of them are based in the fixes provided by Halo Combat Evolved present
+in MCC, however the codebase presented here is specifically designed to work with Halo Custom
+Edition, is not meant to be aligned with shaders in MCC, further code changes will not be related to
+MCC in any way, this mod and it's code belongs to a gray area where it needs to be, if this does not
+work for you or you are not in agreement with this then this is not the project you should be
+looking at, see **Master Chief Collection** and **Halo MCC Mod Tools** instead.
