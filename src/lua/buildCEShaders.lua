@@ -49,6 +49,7 @@ if args.vertex then
     shadersOutputFilePath = shadersOutputPath .. "vsh.dec"
 end
 local shadersFile = io.open(shadersOutputFilePath, "wb")
+assert(shadersFile, "Failed to open output file " .. shadersOutputFilePath)
 if not args.vertex then
     -- Effect Collection Version
     shadersFile:write(wuint32(126))
@@ -56,6 +57,7 @@ end
 
 local pixelShaders = {}
 local vertexShaders = {}
+
 for shaderName, shaderFolderEntry in fs.dir(args.shadersPath) do
     if not args.vertex then
         local shaders = {}
@@ -82,7 +84,6 @@ for shaderName, shaderFolderEntry in fs.dir(args.shadersPath) do
         end
         local pixelShaderIndex = index(pixelShaderNames)[shaderName]
         pixelShaders[pixelShaderIndex] = {shaderName, shaders}
-
     else
         if ends(shaderName, ".dxbc") then
             local byteCode = readfile(shaderFolderEntry:path(), "b")

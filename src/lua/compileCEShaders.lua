@@ -68,13 +68,13 @@ if args.compatible then
 end
 if args.vertex then
     shaderClass = "vs"
-    shadersOutput = "bin/shaders/vsh"
-    fs.mkdir(shadersOutput)
+    shadersOutput = "build/vsh"
     shaderFilesPath = shadersOutput
     directXByteCodePath = shaderFilesPath .. "/%s" .. ".dxbc"
 else
-    fs.mkdir(shaderFilesPath)
+    fs.mkdir(shaderFilesPath, true)
 end
+fs.mkdir(shadersOutput, true)
 
 local function pixelShaderToDXBC(shaderPath, shaderFunctionName)
     local shader = io.open(shaderPath, "rb")

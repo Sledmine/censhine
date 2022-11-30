@@ -169,4 +169,4 @@ $SHADER_COMPILE_CMD/environment_texture/normal/environment_texture_normal_multip
 
 luajit src/lua/buildCEShaders.lua build/EffectCollection_ps_2_0 --encrypt
 #luajit src/lua/buildCEShaders.lua build/EffectCollection_ps_3_0 --encrypt
-luajit src/lua/buildCEShaders.lua build/vsh --vertex
+#luajit src/lua/buildCEShaders.lua build/vsh --vertex
