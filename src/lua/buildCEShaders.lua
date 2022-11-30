@@ -97,6 +97,7 @@ for shaderName, shaderFolderEntry in fs.dir(args.shadersPath) do
     end
 end
 if not args.vertex then
+    assert(#pixelShaders == #pixelShaderNames, "Error, missing pixel shaders to compile")
     for pixelShaderIndex, shaderData in pairs(pixelShaders) do
         local shaderName = shaderData[1]
         log("Shader: " .. shaderName)
@@ -116,6 +117,7 @@ if not args.vertex then
         log("-")
     end
 else
+    assert(#vertexShaders == #vertexShaderNames, "Error, missing vertex shaders to compile")
     for vertexShaderIndex, byteCode in ipairs(vertexShaders) do
         -- print(vertexShaderNames[vertexShaderIndex] or "unknown", vertexShaderIndex)
         shadersFile:write(wuint32(#byteCode))
