@@ -84,8 +84,22 @@ to be a luajit interpreter obligatory, I usually download binaries from the [lua
 Then make sure you have the latest version of [DirectX9 runtime](https://www.microsoft.com/en-us/download/details.aspx?id=35) installed, this contains some libraries and binaries required to compile DirectX9 shaders.
 
 ## Get it done
+Not all the shaders from this repository are in a compilable state that fits well with Halo Custom
+Edition, keep in mind that we are building shaders in a way that the game can use straight, so some
+shaders need to be tweaked to fit what the game is expecting to find, in the future if we want to
+improve shaders we will need some kind of game modification to expand shaders functionality.
+
+As we still need some original shader files in order to allow the game to run properly we first have
+to extract a set of working shaders for the game and then compile our shaders in top of those.
+
+Run a command like this setting a path to your original shader files, it will create a **build** folder
+where we can start compiling our new shaders:
+```
+luajit src/lua/extractCEShaders.lua $HALO_CE_PATH/shaders/EffectCollection_ps_2_0.enc --decrypt --preparebuild
+```
+
 Now just run `./shaders.sh` in the root folder of this project and that's it, a shaders file
-usually named `EffectCollection_ps_2_0.enc` will be dropped in under the dist folder.
+usually named `EffectCollection_ps_2_0.enc` will be dropped in under the **dist** folder.
 
 # Thanks to
 - [JerryBrick](https://github.com/JerryBrick) - Composer tools creator, tools for decrypting and encrypting shaders **(show some love to Jerry, he is leaving the modding scene)**
