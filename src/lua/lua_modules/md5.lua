@@ -1,6 +1,12 @@
 --md5 hash and digest
 local ffi = require "ffi"
-local C = ffi.load'bin/md5'
+local C
+if ffi.os == "Windows" then
+	C = ffi.load("bin/md5")
+else
+	package.cpath = package.cpath .. ";bin/?.so"
+	C = ffi.load("md5")
+end
 
 ffi.cdef[[
 typedef struct {
