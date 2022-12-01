@@ -17,7 +17,7 @@ Halo Custom Edition as Gearbox left us with broken version of almost all the sha
 CEnshine was made possible using primarily Lua and HLSL, take a look at the source files on this
 repository.
 
-For a more deeper introduction to shader encryption see [Composer](https://github.com/JerryBrick/composer) a CLI set of programs made
+For a more deeper introduction to shader encryption see [Composer](https://github.com/MangoFizz/composer) a CLI set of programs made
 with C++ for decrypting, encrypting of shaders.
 
 **Install it with [Mercury](https://github.com/Sledmine/Mercury):**
@@ -95,14 +95,14 @@ to extract a set of working shaders for the game and then compile our shaders in
 Run a command like this setting a path to your original shader files, it will create a **build** folder
 where we can start compiling our new shaders:
 ```
-luajit src/lua/extractCEShaders.lua $HALO_CE_PATH/shaders/EffectCollection_ps_2_0.enc --decrypt --preparebuild
+./extract.sh $HALO_CE_PATH/shaders/EffectCollection_ps_2_0.enc --decrypt --preparebuild
 ```
 
-Now just run `./shaders.sh` in the root folder of this project and that's it, a shaders file
-usually named `EffectCollection_ps_2_0.enc` will be dropped in under the **dist** folder.
+Now just run `./build.sh` in the root folder of this project and that's it, a shaders file
+usually named `EffectCollection_ps_2_0.enc` will be dropped under the **dist** folder.
 
 # Thanks to
-- [JerryBrick](https://github.com/JerryBrick) - Composer tools creator, tools for decrypting and encrypting shaders **(show some love to Jerry, he is leaving the modding scene)**
+- [MangoFizz](https://github.com/MangoFizz) - Composer tools creator, tools for decrypting and encrypting shaders.
 - [MrChromed](https://www.youtube.com/c/MrChromed) - Halo CE Shaders veteran, providing support for validating shaders fixes
 - [MarkMcFuzz](https://youtube.com/channel/UCa2MHGKv8KZFBBkkFzNBgkA) - Another Halo CE Shaders veteran, support and validation
 - [Mata](https://youtube.com/channel/UCa2MHGKv8KZFBBkkFzNBgkA) - 3D expert, probably the igniter of this
