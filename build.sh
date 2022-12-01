@@ -1,6 +1,6 @@
 export LUA_PATH='./?.lua;./src/lua/lua_modules/?.lua;./src/lua/lua_modules/fs/?.lua;./src/lua/lua_modules/?/init.lua'
 export SHADER_PATH='./src/game/rasterizer/dx9/shaders'
-export SHADER_COMPILE_CMD="luajit src/lua/compileCEShaders.lua $SHADER_PATH/pixel"
+export SHADER_COMPILE_CMD="luajit src/lua/compile.lua $SHADER_PATH/pixel"
 
 ################################################################################
 ## Compile the pixel shaders
@@ -167,6 +167,5 @@ $SHADER_COMPILE_CMD/environment_texture/normal/environment_texture_normal_multip
 ## Build shaders
 ################################################################################
 
-luajit src/lua/buildCEShaders.lua build/EffectCollection_ps_2_0 --encrypt
-#luajit src/lua/buildCEShaders.lua build/EffectCollection_ps_3_0 --encrypt
-#luajit src/lua/buildCEShaders.lua build/vsh --vertex
+luajit src/lua/build.lua build/EffectCollection_ps_2_0 --encrypt
+#luajit src/lua/build.lua build/vsh --vertex

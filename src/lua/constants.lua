@@ -1,3 +1,21 @@
+local binaries = {
+    encrypt = "bin/composer/composer-encrypt.exe",
+    decrypt = "bin/composer/composer-decrypt.exe",
+    fxc = "bin/dx9/fxc.exe"
+}
+
+if jit.os == "Linux" then
+    binaries.encrypt = "wine " .. binaries.encrypt
+    binaries.decrypt = "wine " .. binaries.decrypt
+    binaries.fxc = "wine " .. binaries.fxc
+else
+    binaries.encrypt = "cmd /c " .. binaries.encrypt:gsub("/", "\\")
+    binaries.decrypt = "cmd /c " .. binaries.decrypt:gsub("/", "\\")
+    binaries.fxc = "cmd /c " .. binaries.fxc:gsub("/", "\\")
+end
+
+local separators = {Windows = "\\", Linux = "/"}
+
 local vertexShaderNames = {
     "convolution",
     "debug",
@@ -342,18 +360,14 @@ local pixelShaderFunctions = {
     environment_texture_blended_multiply_biased_multiply = {
         EnvironmentTextureBlendedMultiplyBiasedMultiply = 1
     },
-    environment_texture_blended_multiply_multiply = {
-        EnvironmentTextureBlendedMultiplyMultiply = 1
-    },
+    environment_texture_blended_multiply_multiply = {EnvironmentTextureBlendedMultiplyMultiply = 1},
     environment_texture_normal_biased_add_biased_add = {
         EnvironmentTextureNormalBiasedAddBiasedAdd = 1
     },
     environment_texture_normal_biased_add_biased_multiply = {
         EnvironmentTextureNormalBiasedAddBiasedMultiply = 1
     },
-    environment_texture_normal_biased_add_multiply = {
-        EnvironmentTextureNormalBiasedAddMultiply = 1
-    },
+    environment_texture_normal_biased_add_multiply = {EnvironmentTextureNormalBiasedAddMultiply = 1},
     environment_texture_normal_biased_multiply_biased_add = {
         EnvironmentTextureNormalBiasedMultiplyBiasedAdd = 1
     },
@@ -363,15 +377,11 @@ local pixelShaderFunctions = {
     environment_texture_normal_biased_multiply_multiply = {
         EnvironmentTextureNormalBiasedMultiplyMultiply = 1
     },
-    environment_texture_normal_multiply_biased_add = {
-        EnvironmentTextureNormalMultiplyBiasedAdd = 1
-    },
+    environment_texture_normal_multiply_biased_add = {EnvironmentTextureNormalMultiplyBiasedAdd = 1},
     environment_texture_normal_multiply_biased_multiply = {
         EnvironmentTextureNormalMultiplyBiasedMultiply = 1
     },
-    environment_texture_normal_multiply_multiply = {
-        EnvironmentTextureNormalMultiplyMultiply = 1
-    },
+    environment_texture_normal_multiply_multiply = {EnvironmentTextureNormalMultiplyMultiply = 1},
     environment_texture_specular_mask_biased_add_biased_add = {
         EnvironmentTextureSpecularMaskBiasedAddBiasedAdd = 1
     },
@@ -721,18 +731,18 @@ local pixelShaderFunctionMapping = {
         {"main_T23_P0", "ChangeColorMaskDetailAfterReflectionBiasedAddComplexFog"}
     },
     model_mask_none = {
-    {"main_T0_P0", "NoMaskDetailBeforeReflectionBiasedMultiply"},
-    {"main_T1_P0", "NoMaskDetailBeforeReflectionMultiply"},
-    {"main_T2_P0", "NoMaskDetailBeforeReflectionBiasedAdd"},
-    {"main_T3_P0", "NoMaskDetailAfterReflectionBiasedMultiply"},
-    {"main_T4_P0", "NoMaskDetailAfterReflectionMultiply"},
-    {"main_T5_P0", "NoMaskDetailAfterReflectionBiasedAdd"},
-    {"main_T6_P0", "NoMaskDetailBeforeReflectionBiasedMultiplyComplexFog"},
-    {"main_T7_P0", "NoMaskDetailBeforeReflectionMultiplyComplexFog"},
-    {"main_T8_P0", "NoMaskDetailBeforeReflectionBiasedAddComplexFog"},
-    {"main_T9_P0", "NoMaskDetailAfterReflectionBiasedMultiplyComplexFog"},
-    {"main_T10_P0", "NoMaskDetailAfterReflectionMultiplyComplexFog"},
-    {"main_T11_P0", "NoMaskDetailAfterReflectionBiasedAddComplexFog"}
+        {"main_T0_P0", "NoMaskDetailBeforeReflectionBiasedMultiply"},
+        {"main_T1_P0", "NoMaskDetailBeforeReflectionMultiply"},
+        {"main_T2_P0", "NoMaskDetailBeforeReflectionBiasedAdd"},
+        {"main_T3_P0", "NoMaskDetailAfterReflectionBiasedMultiply"},
+        {"main_T4_P0", "NoMaskDetailAfterReflectionMultiply"},
+        {"main_T5_P0", "NoMaskDetailAfterReflectionBiasedAdd"},
+        {"main_T6_P0", "NoMaskDetailBeforeReflectionBiasedMultiplyComplexFog"},
+        {"main_T7_P0", "NoMaskDetailBeforeReflectionMultiplyComplexFog"},
+        {"main_T8_P0", "NoMaskDetailBeforeReflectionBiasedAddComplexFog"},
+        {"main_T9_P0", "NoMaskDetailAfterReflectionBiasedMultiplyComplexFog"},
+        {"main_T10_P0", "NoMaskDetailAfterReflectionMultiplyComplexFog"},
+        {"main_T11_P0", "NoMaskDetailAfterReflectionBiasedAddComplexFog"}
     },
     model_mask_self_illumination = {
         {"main_T0_P0", "SelfIlluminationMaskInverseDetailBeforeReflectionBiasedMultiply"},
@@ -761,23 +771,19 @@ local pixelShaderFunctionMapping = {
         {"main_T23_P0", "SelfIlluminationMaskDetailAfterReflectionBiasedAddComplexFog"}
     },
     shadow_convolve = {{"main_T0_P0", "ShadowConvolve"}},
-    environment_specular_light_bumped = {
-        {"main_T0_P0", "SpecularLightBumped"}
-    },
-    environment_specular_light_flat = {
-        {"main_T0_P0", "EnvironmentSpecularLightFlat"}
-    },
+    environment_specular_light_bumped = {{"main_T0_P0", "SpecularLightBumped"}},
+    environment_specular_light_flat = {{"main_T0_P0", "EnvironmentSpecularLightFlat"}},
     transparent_glass_diffuse = {
         {"main_T0_P0", "TransparentGlassDiffuseModel"},
         {"main_T0_P1", "TransparentGlassDiffuseEnvironment"}
     },
     transparent_glass_reflection_flat = {
-        {"main", "GlassReflectionFlat"},
-        --{"main_T0_P1", "GlassReflectionFlatSpecularMask"}
+        {"main", "GlassReflectionFlat"}
+        -- {"main_T0_P1", "GlassReflectionFlatSpecularMask"}
     },
     transparent_glass_reflection_mirror = {
-        {"main", "GlassReflectionMirror"},
-        --{"main_T0_P1", "GlassReflectionMirrorSpecularMask"}
+        {"main", "GlassReflectionMirror"}
+        -- {"main_T0_P1", "GlassReflectionMirrorSpecularMask"}
     }
 }
 
@@ -785,5 +791,7 @@ return {
     vertexShaderNames = vertexShaderNames,
     pixelShaderNames = pixelShaderNames,
     pixelShaderFunctions = pixelShaderFunctions,
-    pixelShaderFunctionMapping = pixelShaderFunctionMapping
+    pixelShaderFunctionMapping = pixelShaderFunctionMapping,
+    binaries = binaries,
+    separators = separators
 }

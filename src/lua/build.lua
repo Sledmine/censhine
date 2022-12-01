@@ -1,6 +1,5 @@
 local argparse = require "argparse"
 local glue = require "glue"
-local binaries = require "src.lua.binaries"
 local readfile = glue.readfile
 local keys = glue.keys
 local index = glue.index
@@ -9,9 +8,11 @@ local ends = glue.string.ends
 local md5 = require "md5"
 local fs = require "fs"
 require "compat53"
-local vertexShaderNames = require"src.lua.constants".vertexShaderNames
-local pixelShaderNames = require"src.lua.constants".pixelShaderNames
-local pixelShaderFunctions = require"src.lua.constants".pixelShaderFunctions
+local constants = require "src.lua.constants"
+local vertexShaderNames = constants.vertexShaderNames
+local pixelShaderNames = constants.pixelShaderNames
+local pixelShaderFunctions = constants.pixelShaderFunctions
+local binaries = constants.binaries
 
 local function uint32(input)
     return string.unpack("I", input)
@@ -26,7 +27,7 @@ local function wbyte(input)
     return string.pack("B", input)
 end
 
-local parser = argparse("buildCEShaders", "Build pixel or vertex shaders file")
+local parser = argparse("build", "Build shaders for Halo Custom Edition from dxbc files")
 parser:argument("shadersPath", "Path to directX byte code shader files")
 parser:flag("--vertex", "Build vertex shaders")
 parser:flag("--verifystock", "Verify stock shaders")

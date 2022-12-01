@@ -1,14 +1,15 @@
 local argparse = require "argparse"
 local glue = require "glue"
-local inspect = require "inspect"
 local fs = require "fs"
 require "compat53"
-local vertexShaderNames = require"src.lua.constants".vertexShaderNames
-local pixelShaderFunctionMapping = require"src.lua.constants".pixelShaderFunctionMapping
-local binaries                   = require "src.lua.binaries"
+local constants = require "src.lua.constants"
+local vertexShaderNames = constants.vertexShaderNames
+local pixelShaderFunctionMapping = constants.pixelShaderFunctionMapping
+local binaries = constants.binaries
 
 local fxcPath = binaries.fxc
-local fxCompilerCommand = fxcPath .. [[ %s /nologo /I "src/game/rasterizer/dx9/shaders/pixel/include" /E %s /T %s /Fo %s]]
+local fxCompilerCommand = fxcPath ..
+                              [[ %s /nologo /I "src/game/rasterizer/dx9/shaders/pixel/include" /E %s /T %s /Fo %s]]
 local decompilerCommand = fxcPath .. [[ %s /nologo /dumpbin /Fx %s]]
 
 --- Normalize any string to camel case
@@ -36,7 +37,7 @@ local function wuint32(input)
     return string.pack("I", input)
 end
 
-local parser = argparse("compileCEShaders", "Compile CE shaders")
+local parser = argparse("compile", "Compile Halo Custom Edition shaders to dxbc files")
 parser:argument("shadersPath", "Path to the source shader file")
 parser:argument("entryPoint", "Entry point name for the shader"):args("?")
 parser:argument("shadeFunctionName", "Shader function name"):args("?")

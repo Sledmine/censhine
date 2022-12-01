@@ -1,11 +1,12 @@
 local argparse = require "argparse"
 local glue = require "glue"
-local binaries = require "src.lua.binaries"
+local constants = require "src.lua.constants"
 local split = glue.string.split
 local inspect = require "inspect"
 local fs = require "fs"
 require "compat53"
-local vertexShaderNames = require"src.lua.constants".vertexShaderNames
+local vertexShaderNames = constants.vertexShaderNames
+local binaries = constants.binaries
 
 function uint32(input)
     return string.unpack("I", input)
@@ -15,7 +16,7 @@ function wuint32(input)
     return string.pack("I", input)
 end
 
-local parser = argparse("extractCEShaders", "Extract shaders from dec files")
+local parser = argparse("extract", "Extract shaders from dec files")
 parser:argument("shadersFilePath", "Path to the binary shaders file")
 parser:flag("--decrypt", "Decrypt shader prior to extraction")
 parser:flag("--decompile", "Allow shader decompilation for debugging")
@@ -40,13 +41,14 @@ local pixelShaderNames = {}
 local pixelShaderFunctionNames = {}
 assert(shadersFile, "Could not open file " .. args.shadersFilePath)
 if shadersFile then
-    local splitPath = glue.string.split(args.shadersFilePath, "/")
+    local splitPath = glue.string.split(args.shadersFilePath:gsub("\\", "/"), "/")
     local shadersFileName = glue.string.split(splitPath[#splitPath], ".")[1]
     local dumpPath = "dump/shaders/" .. shadersFileName .. "/"
     if args.preparebuild then
         dumpPath = "build/" .. shadersFileName .. "/"
+        print("Dump path:", dumpPath)
+        assert(fs.is(dumpPath), "Could not find dump path")
     end
-    print(dumpPath)
 
     if not args.vertex then
         -- Skip version file
