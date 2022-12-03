@@ -40,15 +40,18 @@ half4 main(PS_INPUT i) : SV_TARGET
 	////////////////////////////////////////////////////////////
 	// calculate bump attenuation
 	////////////////////////////////////////////////////////////
+	half baked_attenuation = dot(normalize(2*normal_color.rgb-1), half3(0.0f, 0.0f, 1.0f));
 	half bump_attenuation = dot((2*bump_color.rgb)-1, (2*normal_color.rgb)-1);
-	bump_attenuation = (bump_attenuation * Diff.a) + 1-Diff.a;
+	bump_attenuation = 1 + bump_attenuation - baked_attenuation;
+	bump_attenuation = lerp(1, bump_attenuation, Diff.a);
 
 	////////////////////////////////////////////////////////////
 	// combine output
 	////////////////////////////////////////////////////////////
 	half3 final_color = lightmap_color;
-	final_color *= c_material_color;
 	final_color *= bump_attenuation;
+	final_color *= c_material_color;
+
 	
 	return TestAlphaGreaterRef( half4( final_color, bump_color.a), c_alpha_ref );
 };
