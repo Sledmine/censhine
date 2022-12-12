@@ -76,6 +76,7 @@ half4 main(PS_INPUT i) : SV_TARGET
 	// calculate bump attenuation
 	////////////////////////////////////////////////////////////
    float bump_attenuation = saturate(dot(normalize(2*bump_color.rgb-1), normalize(2*normal_color.rgb-1)));
+   float baked_attenuation = dot(normalize(2*normal_color.rgb-1), float3(0.0f, 0.0f, 1.0f));
    float bump_attenuation_with_accuracy = lerp(1, bump_attenuation, Diff.a);
    
 	////////////////////////////////////////////////////////////
