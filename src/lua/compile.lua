@@ -13,6 +13,7 @@ local fxcPath = binaries.fxc
 local fxCompilerCommand = fxcPath ..
                               [[ %s /nologo /I "src/game/rasterizer/dx9/shaders/pixel/include" /E %s /T %s /Fo %s]]
 local decompilerCommand = fxcPath .. [[ %s /nologo /dumpbin /Fx %s]]
+local shaderCompilationPath = "build/tmp/"
 
 --- Normalize any string to camel case
 ---@param str string
@@ -97,9 +98,15 @@ local function shaderToDXBC(shaderPath, shaderFunctionName)
     return true
 end
 
---local tempShaderPath = os.tmpname():replace("/", "\\") .. shaderBinaryName
-local tempShaderPath = os.tmpname():replace("/", "")
+fs.mkdir(shaderCompilationPath, true)
+
+local function getTempCSOShaderPath()
+    return shaderCompilationPath .. os.tmpname():replace("\\", ""):replace("/", ""):replace(".", "")
+end
+
+
 if args.vertex then
+    local tempShaderPath = getTempCSOShaderPath()
     local compileShaderCmd = fxCompilerCommand:format(args.shadersPath, "main",
                                                       profileClass .. "_" .. profileVersion,
                                                       tempShaderPath)
@@ -108,6 +115,7 @@ if args.vertex then
         print("ERROR!!! shader compilation failed")
         os.exit(1)
     end
+    os.remove(tempShaderPath)
     if pcall(shaderToDXBC, tempShaderPath) then
         local cmd2 = decompilerCommand:format(tempShaderPath, debugPath)
         if args.decompile then
@@ -120,6 +128,7 @@ else
         shaderCount = #pixelShaderFunctionMapping[shaderBinaryName]
     end
     for shaderIndex = 1, shaderCount do
+        local tempShaderPath = getTempCSOShaderPath()
         local entryPoint = "main"
         local shaderFunctionName = toCamelCase(shaderBinaryName)
         local shaderPath = args.shadersPath
@@ -139,6 +148,7 @@ else
             print("ERROR!!! shader compilation failed")
             os.exit(1)
         end
+        os.remove(tempShaderPath)
         if pcall(shaderToDXBC, tempShaderPath, shaderFunctionName) then
             local cmd2 = decompilerCommand:format(tempShaderPath, debugPath)
             if args.decompile then
@@ -147,4 +157,3 @@ else
         end
     end
 end
-os.remove(tempShaderPath)
