@@ -28,11 +28,11 @@ $SHADER_COMPILE_CMD/transparent_plasma/transparent_plasma.fx
 
 # Models
 $SHADER_COMPILE_CMD/model/model_environment.fx
-#$SHADER_COMPILE_CMD/model/model_mask_change_color.fx
-#$SHADER_COMPILE_CMD/model/model_mask_multipurpose.fx
-#$SHADER_COMPILE_CMD/model/model_mask_none.fx
-#$SHADER_COMPILE_CMD/model/model_mask_reflection.fx
-#$SHADER_COMPILE_CMD/model/model_mask_self_illumination.fx
+$SHADER_COMPILE_CMD/model/model_mask_change_color.fx
+$SHADER_COMPILE_CMD/model/model_mask_multipurpose.fx
+$SHADER_COMPILE_CMD/model/model_mask_none.fx
+$SHADER_COMPILE_CMD/model/model_mask_reflection.fx
+$SHADER_COMPILE_CMD/model/model_mask_self_illumination.fx
 
 # Environment fog
 $SHADER_COMPILE_CMD/environment/environment_fog.fx
